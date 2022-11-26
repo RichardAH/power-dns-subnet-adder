@@ -1,4 +1,5 @@
 #!/bin/bash
+DOMAIN="domain.com"
 SN="`echo \"$1\" | cut -d'/' -f2`"
 IP="`echo \"$1\" | cut -d'/' -f1`"
 A="`echo \"$IP\" | cut -d'.' -f1`"
@@ -67,6 +68,5 @@ do
         if [ "$C" -eq "255" ]; then continue; fi
         if [ "$D" -eq "255" ]; then continue; fi
 
-        echo "pdnsutil add-record vp.com.se $A-$B-$C-$D A $A.$B.$C.$D"
-        pdnsutil add-record vp.com.se $A-$B-$C-$D A $A.$B.$C.$D
+        pdnsutil add-record $DOMAIN $A-$B-$C-$D A $A.$B.$C.$D
 done
